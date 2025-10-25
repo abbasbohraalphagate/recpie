@@ -12,6 +12,7 @@ import { COLORS, FONTS } from '../../../constant';
 import CustomImg from '../../../component/CustomImage';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import FlatListComponent from '../../../Flatlist';
+import TouchableComponent from '../../../component/TouchableComponent';
 
 const Profile: React.FC = props => {
   useEffect(() => {
@@ -87,7 +88,9 @@ const Profile: React.FC = props => {
           gap: 15,
         }}
       >
-        <View>
+        <TouchableComponent
+          onPress={() => props?.navigation?.navigate('EditProfile')}
+        >
           <CustomImg
             source={require('../../../assets/images/profile.jpg')}
             style={{ width: 85, height: 85, borderRadius: 50 }}
@@ -98,7 +101,7 @@ const Profile: React.FC = props => {
             color={'#EE8C0E'}
             style={{ position: 'absolute', bottom: 15, right: -10 }}
           />
-        </View>
+        </TouchableComponent>
         <View
           style={{
             flexDirection: 'row',

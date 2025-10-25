@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { COLORS, FONTS } from '../../../constant';
 import Label from '../../../component/Label';
+import TouchableComponent from '../../../component/TouchableComponent';
 
 const CreatePost = props => {
   const [title, setTitle] = React.useState('');
@@ -34,7 +35,7 @@ const CreatePost = props => {
     });
   }, []);
   const options = [
-    { name: 'RECIPE', icon: 'clipboard-outline' },
+    { name: 'RECIPE', icon: 'clipboard-outline', navigation: 'CreateRecpie' },
     { name: 'TIP', icon: 'bulb-outline' },
     { name: 'POST', icon: 'document-text-outline' },
     { name: 'LIVE', icon: 'videocam' },
@@ -53,7 +54,8 @@ const CreatePost = props => {
       >
         {options?.map((item, index) => {
           return (
-            <View
+            <TouchableComponent
+              onPress={() => props?.navigation?.navigate(item?.navigation)}
               style={{
                 padding: 20,
                 borderRadius: 8,
@@ -78,7 +80,7 @@ const CreatePost = props => {
                 size={16}
                 family={FONTS.PoppinsBold}
               />
-            </View>
+            </TouchableComponent>
           );
         })}
       </View>

@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
   },
   inputContainerStyle: {
-    // height: 50,
+    height: 50,
     borderRadius: 5,
     borderBottomWidth: 0,
     backgroundColor: '#F5F5F5',

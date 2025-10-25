@@ -41,7 +41,7 @@ const HomeScreen: React.FC = props => {
           }}
         >
           <Ionicons name="camera-outline" size={35} />
-          <Ionicons name="chatbox-outline" size={35} />
+          <Ionicons name="chatbox-outline" size={30} />
         </View>
       ),
     });

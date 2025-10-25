@@ -2,7 +2,7 @@ import React from 'react';
 import { Controller } from 'react-hook-form';
 import InputComponent from '../CustomInput';
 import { COLORS } from '../../constant';
-import { ViewStyle } from 'react-native';
+import { TextStyle, ViewStyle } from 'react-native';
 import { IconProps } from '@rneui/base';
 
 interface UseInputProps {
@@ -25,7 +25,7 @@ interface UseInputProps {
   renderLeftIcon?: IconProps;
   autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
   containerStyle?: ViewStyle;
-  inputContainerStyle?: ViewStyle;
+  inputContainerStyle?: TextStyle;
   iconName?: string;
   error?: string | boolean;
   leftIconName?: string;
