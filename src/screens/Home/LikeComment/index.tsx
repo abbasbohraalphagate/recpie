@@ -21,7 +21,7 @@ interface LikeCommentProps {
 const LikeComment: React.FC<LikeCommentProps> = props => {
   useEffect(() => {
     props?.navigation.setOptions({
-      headerLeft: () => (
+      headerTitle: () => (
         <Label
           labelContent={'Back'}
           size={20}

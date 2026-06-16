@@ -27,21 +27,30 @@ const HomeScreen: React.FC = props => {
 
   useEffect(() => {
     props?.navigation.setOptions({
-      headerLeft: null,
-      headerTitle: 'NewsFeed',
-      headerStyle: { height: 80 },
-      headerTitleStyle: { fontSize: 20, fontFamily: FONTS.PoppinsSemiBold },
+      headerLeft: () => (
+        <Label
+          labelContent={'Newsfeed'}
+          size={20}
+          family={FONTS.PoppinsSemiBold}
+          // onPress={props?.navigation?.goBack()}
+          mh={0}
+        />
+      ),
       headerRight: () => (
         <View
           style={{
             flexDirection: 'row',
             alignItems: 'center',
             gap: 20,
-            paddingRight: 15,
+            paddingRight: 5,
           }}
         >
           <Ionicons name="camera-outline" size={35} />
-          <Ionicons name="chatbox-outline" size={30} />
+          <Ionicons
+            name="chatbox-outline"
+            size={30}
+            onPress={() => props?.navigation?.navigate('Chat')}
+          />
         </View>
       ),
     });
@@ -111,143 +120,347 @@ const HomeScreen: React.FC = props => {
     {
       name: 'Abbas',
       profile: require('../../../assets/images/profile1.jpg'),
+      image_url: require('../../../assets/images/food1.jpg'),
+      info: 'Red chilli chicken with black paper and crunchi nuts',
+      time: 'Min 30',
+      images: [
+        require('../../../assets/images/profile1.jpg'),
+        require('../../../assets/images/profile2.jpg'),
+        require('../../../assets/images/profile.jpg'),
+      ],
+      comments: [
+        {
+          id: 'c1',
+          username: 'PeterPan',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'Tried this myself and was delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [
+            {
+              id: 'r1',
+              username: 'Heston1',
+              userAvatar: require('../../../assets/images/profile1.jpg'),
+              text: 'Glad you liked it!',
+              time: '2d',
+            },
+          ],
+        },
+        {
+          id: 'c2',
+          username: 'FoodLover',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [],
+        },
+      ],
+      Ingredients: [
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+      ],
+      Instruction: {
+        heading1: 'Prep Time 10 Mins',
+        heading2: 'Cook Time 10 Mins',
+        info: [
+          {
+            title: 'step 1',
+            value:
+              'In a medium sized bowl combine ground beef, panko, parsley, allspice, nutmeg, onion, garlic powder, pepper. salt and egg. Mix until combined.',
+          },
+          {
+            title: 'step 2',
+            value:
+              'Roll into 12 large meatballs or 20 small meatballs. In a large skillet heat olive oil and 1 Tablespoon butter. Add the meatballs and cook turning continuously until brown on each side and cooked throughout. Transfer to a plate and cover with foil.',
+          },
+        ],
+      },
+      showComments: false,
+    },
+    {
+      name: 'Abbas',
+      profile: require('../../../assets/images/profile1.jpg'),
+      image_url: require('../../../assets/images/food2.jpg'),
+      info: 'Red chilli chicken with black paper and crunchi nuts',
+      time: 'Min 30',
+      images: [
+        require('../../../assets/images/profile1.jpg'),
+        require('../../../assets/images/profile2.jpg'),
+        require('../../../assets/images/profile.jpg'),
+      ],
+      comments: [
+        {
+          id: 'c1',
+          username: 'PeterPan',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'Tried this myself and was delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [
+            {
+              id: 'r1',
+              username: 'Heston1',
+              userAvatar: require('../../../assets/images/profile1.jpg'),
+              text: 'Glad you liked it!',
+              time: '2d',
+            },
+          ],
+        },
+        {
+          id: 'c2',
+          username: 'FoodLover',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [],
+        },
+      ],
+      Ingredients: [
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+      ],
+      Instruction: {
+        heading1: 'Prep Time 10 Mins',
+        heading2: 'Cook Time 10 Mins',
+        info: [
+          {
+            title: 'step 1',
+            value:
+              'In a medium sized bowl combine ground beef, panko, parsley, allspice, nutmeg, onion, garlic powder, pepper. salt and egg. Mix until combined.',
+          },
+          {
+            title: 'step 2',
+            value:
+              'Roll into 12 large meatballs or 20 small meatballs. In a large skillet heat olive oil and 1 Tablespoon butter. Add the meatballs and cook turning continuously until brown on each side and cooked throughout. Transfer to a plate and cover with foil.',
+          },
+        ],
+      },
+      showComments: false,
+    },
+    {
+      name: 'Abbas',
+      profile: require('../../../assets/images/profile1.jpg'),
+      image_url: require('../../../assets/images/food.jpg'),
+      info: 'Red chilli chicken with black paper and crunchi nuts',
+      time: 'Min 30',
+      images: [
+        require('../../../assets/images/profile1.jpg'),
+        require('../../../assets/images/profile2.jpg'),
+        require('../../../assets/images/profile.jpg'),
+      ],
+      comments: [
+        {
+          id: 'c1',
+          username: 'PeterPan',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'Tried this myself and was delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [
+            {
+              id: 'r1',
+              username: 'Heston1',
+              userAvatar: require('../../../assets/images/profile1.jpg'),
+              text: 'Glad you liked it!',
+              time: '2d',
+            },
+          ],
+        },
+        {
+          id: 'c2',
+          username: 'FoodLover',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [],
+        },
+      ],
+      Ingredients: [
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+      ],
+      Instruction: {
+        heading1: 'Prep Time 10 Mins',
+        heading2: 'Cook Time 10 Mins',
+        info: [
+          {
+            title: 'step 1',
+            value:
+              'In a medium sized bowl combine ground beef, panko, parsley, allspice, nutmeg, onion, garlic powder, pepper. salt and egg. Mix until combined.',
+          },
+          {
+            title: 'step 2',
+            value:
+              'Roll into 12 large meatballs or 20 small meatballs. In a large skillet heat olive oil and 1 Tablespoon butter. Add the meatballs and cook turning continuously until brown on each side and cooked throughout. Transfer to a plate and cover with foil.',
+          },
+        ],
+      },
+      showComments: false,
+    },
+    {
+      name: 'Abbas',
+      profile: require('../../../assets/images/profile1.jpg'),
+      image_url: require('../../../assets/images/profile.jpg'),
+      info: 'Red chilli chicken with black paper and crunchi nuts',
+      time: 'Min 30',
+      images: [
+        require('../../../assets/images/profile1.jpg'),
+        require('../../../assets/images/profile2.jpg'),
+        require('../../../assets/images/profile.jpg'),
+      ],
+      comments: [
+        {
+          id: 'c1',
+          username: 'PeterPan',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'Tried this myself and was delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [
+            {
+              id: 'r1',
+              username: 'Heston1',
+              userAvatar: require('../../../assets/images/profile1.jpg'),
+              text: 'Glad you liked it!',
+              time: '2d',
+            },
+          ],
+        },
+        {
+          id: 'c2',
+          username: 'FoodLover',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [],
+        },
+      ],
+      Ingredients: [
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+      ],
+      Instruction: {
+        heading1: 'Prep Time 10 Mins',
+        heading2: 'Cook Time 10 Mins',
+        info: [
+          {
+            title: 'step 1',
+            value:
+              'In a medium sized bowl combine ground beef, panko, parsley, allspice, nutmeg, onion, garlic powder, pepper. salt and egg. Mix until combined.',
+          },
+          {
+            title: 'step 2',
+            value:
+              'Roll into 12 large meatballs or 20 small meatballs. In a large skillet heat olive oil and 1 Tablespoon butter. Add the meatballs and cook turning continuously until brown on each side and cooked throughout. Transfer to a plate and cover with foil.',
+          },
+        ],
+      },
+      showComments: true,
+    },
+    {
+      name: 'Abbas',
+      profile: require('../../../assets/images/profile1.jpg'),
+      image_url: require('../../../assets/images/profile2.jpg'),
+      info: 'Red chilli chicken with black paper and crunchi nuts',
+      time: 'Min 30',
+      images: [
+        require('../../../assets/images/profile1.jpg'),
+        require('../../../assets/images/profile2.jpg'),
+        require('../../../assets/images/profile.jpg'),
+      ],
+      comments: [
+        {
+          id: 'c1',
+          username: 'PeterPan',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'Tried this myself and was delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [
+            {
+              id: 'r1',
+              username: 'Heston1',
+              userAvatar: require('../../../assets/images/profile1.jpg'),
+              text: 'Glad you liked it!',
+              time: '2d',
+            },
+          ],
+        },
+        {
+          id: 'c2',
+          username: 'FoodLover',
+          userAvatar: require('../../../assets/images/profile2.jpg'),
+          text: 'delicious! Thanks chef Ramsey',
+          time: '3d',
+          replies: [],
+        },
+      ],
+      Ingredients: [
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+        { name: 'Beef', value: '1 kilo' },
+      ],
+      Instruction: {
+        heading1: 'Prep Time 10 Mins',
+        heading2: 'Cook Time 10 Mins',
+        info: [
+          {
+            title: 'step 1',
+            value:
+              'In a medium sized bowl combine ground beef, panko, parsley, allspice, nutmeg, onion, garlic powder, pepper. salt and egg. Mix until combined.',
+          },
+          {
+            title: 'step 2',
+            value:
+              'Roll into 12 large meatballs or 20 small meatballs. In a large skillet heat olive oil and 1 Tablespoon butter. Add the meatballs and cook turning continuously until brown on each side and cooked throughout. Transfer to a plate and cover with foil.',
+          },
+        ],
+      },
+      showComments: false,
+    },
+    {
+      name: 'Abbas',
+      profile: require('../../../assets/images/profile1.jpg'),
       image_url: require('../../../assets/images/profile1.jpg'),
-      info: 'Red chilli chicken with black paper and crunchi nuts',
-      time: 'Min 30',
-      images: [
-        require('../../../assets/images/profile1.jpg'),
-        require('../../../assets/images/profile2.jpg'),
-        require('../../../assets/images/profile.jpg'),
-      ],
-      comments: [
-        {
-          id: 'c1',
-          username: 'PeterPan',
-          userAvatar: require('../../../assets/images/profile2.jpg'),
-          text: 'Tried this myself and was delicious! Thanks chef Ramsey',
-          time: '3d',
-          replies: [
-            {
-              id: 'r1',
-              username: 'Heston1',
-              userAvatar: require('../../../assets/images/profile1.jpg'),
-              text: 'Glad you liked it!',
-              time: '2d',
-            },
-          ],
-        },
-        {
-          id: 'c2',
-          username: 'FoodLover',
-          userAvatar: require('../../../assets/images/profile2.jpg'),
-          text: 'delicious! Thanks chef Ramsey',
-          time: '3d',
-          replies: [],
-        },
-      ],
-      Ingredients: [
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-      ],
-      Instruction: {
-        heading1: 'Prep Time 10 Mins',
-        heading2: 'Cook Time 10 Mins',
-        info: [
-          {
-            title: 'step 1',
-            value:
-              'In a medium sized bowl combine ground beef, panko, parsley, allspice, nutmeg, onion, garlic powder, pepper. salt and egg. Mix until combined.',
-          },
-          {
-            title: 'step 2',
-            value:
-              'Roll into 12 large meatballs or 20 small meatballs. In a large skillet heat olive oil and 1 Tablespoon butter. Add the meatballs and cook turning continuously until brown on each side and cooked throughout. Transfer to a plate and cover with foil.',
-          },
-        ],
-      },
-      showComments: false,
-    },
-    {
-      name: 'Abbas',
-      profile: require('../../../assets/images/profile1.jpg'),
-      image_url: require('../../../assets/images/profile2.jpg'),
-      info: 'Red chilli chicken with black paper and crunchi nuts',
-      time: 'Min 30',
-      images: [
-        require('../../../assets/images/profile1.jpg'),
-        require('../../../assets/images/profile2.jpg'),
-        require('../../../assets/images/profile.jpg'),
-      ],
-      comments: [
-        {
-          id: 'c1',
-          username: 'PeterPan',
-          userAvatar: require('../../../assets/images/profile2.jpg'),
-          text: 'Tried this myself and was delicious! Thanks chef Ramsey',
-          time: '3d',
-          replies: [
-            {
-              id: 'r1',
-              username: 'Heston1',
-              userAvatar: require('../../../assets/images/profile1.jpg'),
-              text: 'Glad you liked it!',
-              time: '2d',
-            },
-          ],
-        },
-        {
-          id: 'c2',
-          username: 'FoodLover',
-          userAvatar: require('../../../assets/images/profile2.jpg'),
-          text: 'delicious! Thanks chef Ramsey',
-          time: '3d',
-          replies: [],
-        },
-      ],
-      Ingredients: [
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-        { name: 'Beef', value: '1 kilo' },
-      ],
-      Instruction: {
-        heading1: 'Prep Time 10 Mins',
-        heading2: 'Cook Time 10 Mins',
-        info: [
-          {
-            title: 'step 1',
-            value:
-              'In a medium sized bowl combine ground beef, panko, parsley, allspice, nutmeg, onion, garlic powder, pepper. salt and egg. Mix until combined.',
-          },
-          {
-            title: 'step 2',
-            value:
-              'Roll into 12 large meatballs or 20 small meatballs. In a large skillet heat olive oil and 1 Tablespoon butter. Add the meatballs and cook turning continuously until brown on each side and cooked throughout. Transfer to a plate and cover with foil.',
-          },
-        ],
-      },
-      showComments: false,
-    },
-    {
-      name: 'Abbas',
-      profile: require('../../../assets/images/profile1.jpg'),
-      image_url: require('../../../assets/images/profile2.jpg'),
       info: 'Red chilli chicken with black paper and crunchi nuts',
       time: 'Min 30',
       images: [
@@ -386,6 +599,7 @@ const HomeScreen: React.FC = props => {
               <View style={styles.mainContainer}>
                 <View>
                   <CustomImg
+                    onPress={() => props?.navigation?.navigate('UserProfile')}
                     style={{ width: 70, height: 70, borderRadius: 50 }}
                     source={item?.profile}
                   />

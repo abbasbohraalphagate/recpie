@@ -10,7 +10,7 @@ export const authentication = createSlice({
   name: 'counter',
   initialState: {
     userData: null,
-    navigationState: navigationStateType?.LOADING,
+    navigationState: navigationStateType?.AUTH,
     expire: false,
     alertModal: false,
     alertMessage: null,

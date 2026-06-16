@@ -8,6 +8,7 @@ import LikeComment from '../../screens/Home/LikeComment';
 import Profile from '../../screens/Home/Profile';
 import HomeScreen from '../../screens/Home/HomeScreen';
 import Settings from '../../screens/Home/Profile/Settings';
+import CustomHeader from '../../component/CustomHeader';
 
 const Tab = createBottomTabNavigator();
 
@@ -38,6 +39,16 @@ const BottomStack = () => {
         headerShadowVisible: false,
         headerTitle: '',
         headerStyle: { height: 80 },
+        header({ navigation, route, options, back }) {
+          return (
+            <CustomHeader
+              Options={options}
+              navigation={navigation}
+              title={''}
+              showBack={!!back}
+            />
+          );
+        },
       })}
     >
       <Tab.Screen name="DashBoard" component={HomeScreen} />

@@ -8,8 +8,13 @@ import CustomImg from '../../../component/CustomImage';
 import AppButton from '../../../component/AppButton';
 import CustomButtom from '../../../component/AppButton/GradientButton';
 import CustomButton from '../../../component/AppButton/GradientButton';
+import UseInput from '../../../component/Hook/UseInput';
+import { useForm } from 'react-hook-form';
 
-const SelectAccount: React.FC = props => {
+const InviteUser: React.FC = props => {
+  const { control, watch, setValue } = useForm({
+    defaultValues: { search: '' },
+  });
   useEffect(() => {
     props.navigation.setOptions({
       headerTitle: '',
@@ -21,17 +26,6 @@ const SelectAccount: React.FC = props => {
           family={FONTS.PoppinsSemiBold}
           onPress={() => props?.navigation?.goBack()}
         />
-      ),
-      headerRight: () => (
-        <View style={{ flexDirection: 'row', alignItems: 'center', gap: 10 }}>
-          <Label
-            labelContent={'Skip'}
-            size={20}
-            color={'#424F54'}
-            family={FONTS.PoppinsRegular}
-          />
-          <Ionicons name="arrow-forward" size={25} />
-        </View>
       ),
     });
   }, []);
@@ -99,40 +93,61 @@ const SelectAccount: React.FC = props => {
   ];
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          marginHorizontal: 20,
-          padding: 10,
-          borderRadius: 15,
-          elevation: 8,
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: 1 },
-          shadowOpacity: 2.5,
-          shadowRadius: 2.5,
-          backgroundColor: COLORS.white,
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          marginVertical: 15,
-        }}
-      >
-        <Label
-          textStyle={{
-            flex: 1,
-            borderRightWidth: 1,
-            borderRightColor: '#B8B8B8',
+      <View style={{ backgroundColor: COLORS.white, paddingBottom: 20 }}>
+        <View
+          style={{
+            marginHorizontal: 20,
+            padding: 10,
+            borderRadius: 15,
+            elevation: 8,
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 1 },
+            shadowOpacity: 2.5,
+            shadowRadius: 2.5,
+            backgroundColor: COLORS.white,
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            marginVertical: 11,
           }}
-          align={'center'}
-          labelContent={'Follow'}
-          size={16}
-          color={'#EF8E0F'}
-          family={FONTS.PoppinsMedium}
-        />
-        <Label
-          textStyle={{ flex: 1 }}
-          align={'center'}
-          labelContent={'Invite'}
-          size={16}
-          family={FONTS.PoppinsMedium}
+        >
+          <Label
+            textStyle={{
+              flex: 1,
+              borderRightWidth: 1,
+              borderRightColor: '#B8B8B8',
+            }}
+            align={'center'}
+            labelContent={'Follow'}
+            size={16}
+            color={'#EF8E0F'}
+            family={FONTS.PoppinsMedium}
+          />
+          <Label
+            textStyle={{ flex: 1 }}
+            align={'center'}
+            labelContent={'Invite'}
+            size={16}
+            family={FONTS.PoppinsMedium}
+          />
+        </View>
+        <UseInput
+          control={control}
+          name={'search'}
+          editable={false}
+          viewStyle={{
+            borderWidth: 1,
+            borderColor: '#D4D4D4',
+            borderRadius: 12,
+            marginHorizontal: 15,
+          }}
+          inputStyle={{}}
+          inputContainerStyle={{
+            borderRadius: 12,
+            backgroundColor: COLORS.white,
+            paddingHorizontal: 10,
+          }}
+          placeholder="Search Contact"
+          renderRightIcon={() => <Ionicons name="search-outline" size={20} />}
         />
       </View>
       <FlatListComponent
@@ -143,7 +158,7 @@ const SelectAccount: React.FC = props => {
               style={{
                 flexDirection: 'row',
                 alignItems: 'center',
-                paddingVertical: 10,
+                paddingVertical: 15,
                 paddingHorizontal: 10,
                 borderTopWidth: index == 0 ? 0 : 1,
                 borderColor: '#B8B8B8',
@@ -160,7 +175,7 @@ const SelectAccount: React.FC = props => {
                 />
                 <Label
                   labelContent={item?.name}
-                  family={FONTS.PoppinsSemiBold}
+                  family={FONTS.PoppinsRegular}
                   size={16}
                 />
               </View>
@@ -189,7 +204,6 @@ const SelectAccount: React.FC = props => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
   },
   title: {
     fontSize: 24,
@@ -209,4 +223,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SelectAccount;
+export default InviteUser;

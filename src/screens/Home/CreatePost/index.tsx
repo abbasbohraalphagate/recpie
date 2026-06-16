@@ -36,9 +36,9 @@ const CreatePost = props => {
   }, []);
   const options = [
     { name: 'RECIPE', icon: 'clipboard-outline', navigation: 'CreateRecpie' },
-    { name: 'TIP', icon: 'bulb-outline' },
-    { name: 'POST', icon: 'document-text-outline' },
-    { name: 'LIVE', icon: 'videocam' },
+    { name: 'TIP', icon: 'bulb-outline', navigation: 'CreateTip' },
+    { name: 'POST', icon: 'document-text-outline', navigation: 'Post' },
+    { name: 'LIVE', icon: 'videocam', navigation: 'CreateLive' },
   ];
 
   return (

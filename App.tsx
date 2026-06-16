@@ -3,12 +3,15 @@ import { View, Text, StyleSheet } from 'react-native';
 import MainStack from './src/navigator/MainStack';
 import { Provider } from 'react-redux';
 import store from './src/component/Redux/App/Store';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <MainStack />
-    </Provider>
+    <SafeAreaView style={{ flex: 1 }}>
+      <Provider store={store}>
+        <MainStack />
+      </Provider>
+    </SafeAreaView>
   );
 };
 

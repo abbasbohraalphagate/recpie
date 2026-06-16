@@ -16,6 +16,7 @@ import CustomImg from '../../../component/CustomImage';
 import Carousel from 'react-native-reanimated-carousel';
 import Label from '../../../component/Label';
 import FlatListComponent from '../../../Flatlist';
+import TouchableComponent from '../../../component/TouchableComponent';
 
 const SearchScreen: React.FC = props => {
   const [results, setResults] = useState<string[]>([]);
@@ -68,24 +69,29 @@ const SearchScreen: React.FC = props => {
   return (
     <View style={styles.container}>
       <View style={{ backgroundColor: COLORS.white, paddingBottom: 10 }}>
-        <UseInput
-          control={control}
-          name={'search'}
-          viewStyle={{
-            borderWidth: 1,
-            borderColor: '#D4D4D4',
-            borderRadius: 12,
-            marginHorizontal: 15,
-          }}
-          inputStyle={{}}
-          inputContainerStyle={{
-            borderRadius: 12,
-            backgroundColor: COLORS.white,
-            paddingHorizontal: 10,
-          }}
-          placeholder="Search Recpeis,Chefs& Cusine"
-          renderRightIcon={() => <Ionicons name="search-outline" size={20} />}
-        />
+        <TouchableComponent
+          onPress={() => props?.navigation?.navigate('MainSearch')}
+        >
+          <UseInput
+            control={control}
+            name={'search'}
+            editable={false}
+            viewStyle={{
+              borderWidth: 1,
+              borderColor: '#D4D4D4',
+              borderRadius: 12,
+              marginHorizontal: 15,
+            }}
+            inputStyle={{}}
+            inputContainerStyle={{
+              borderRadius: 12,
+              backgroundColor: COLORS.white,
+              paddingHorizontal: 10,
+            }}
+            placeholder="Search Recpeis,Chefs& Cusine"
+            renderRightIcon={() => <Ionicons name="search-outline" size={20} />}
+          />
+        </TouchableComponent>
       </View>
       <ScrollView>
         <View style={{}}>

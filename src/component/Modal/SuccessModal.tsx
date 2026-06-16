@@ -1,10 +1,11 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import Modal from 'react-native-modal';
-import GradientButton from '../AppButton/GradientButton';
-import SuccessSvg from '../../assets/svg/Succes.svg';
 import Label from '../Label';
 import { COLORS, FONTS } from '../../constant';
+import RowLabel from '../Label/RowLabel';
+import Ionicons from '@react-native-vector-icons/ionicons';
+import CustomButton from '../AppButton/GradientButton';
 
 interface SuccessModalProps {
   visible: boolean;
@@ -27,31 +28,108 @@ const SuccessModal: React.FC<SuccessModalProps> = ({
     <Modal isVisible={visible} onBackdropPress={onClose}>
       <View style={styles.overlay}>
         <View style={styles.container}>
-          <SuccessSvg />
-          {title && (
-            <Label
-              labelContent={title}
-              family={FONTS.CaudexBold}
-              color={COLORS.green}
-              size={18}
-            />
-          )}
-          {message && (
-            <Label
-              labelContent={message}
-              family={FONTS.CaudexBold}
-              color={COLORS.textColor}
-              size={18}
-              align={'center'}
-            />
-          )}
+          <Ionicons
+            name="close-outline"
+            size={25}
+            style={{ alignSelf: 'flex-end' }}
+          />
 
-          <GradientButton
-            title={ButtonText ?? 'Yeeehhhhh'}
-            onPress={onButtonPress}
-            containerStyle={{ width: '100%' }}
-            colors={['#FEBF07', '#FF9114', '#FF5F20']}
-            linerStyle={{ paddingHorizontal: 15 }}
+          <RowLabel
+            viewStye={{ flexDirection: 'column' }}
+            firstLabel={'Where would you '}
+            secondLabel={'Like to post to ?'}
+            family={FONTS.PoppinsMedium}
+            family1={FONTS.PoppinsRegular}
+            color1={COLORS.white}
+            color2={COLORS.white}
+            firstLabelSize={16}
+            secondLabelSize={14}
+          />
+          <View
+            style={{
+              width: '99%',
+              height: 1,
+              backgroundColor: '#EF8E0F',
+              alignSelf: 'center',
+            }}
+          />
+          <View
+            style={{
+              padding: 40,
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 10,
+                gap: 10,
+              }}
+            >
+              <Label
+                labelContent={'General Feed'}
+                size={16}
+                family={FONTS.PoppinsBold}
+                color={'#EF8E0F'}
+                textStyle={{ flex: 1 }}
+              />
+              <Ionicons
+                name="checkbox-outline"
+                size={25}
+                color={COLORS.white}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 10,
+                gap: 10,
+              }}
+            >
+              <Label
+                labelContent={'Gold Feed'}
+                size={16}
+                family={FONTS.PoppinsBold}
+                color={'#EF8E0F'}
+                textStyle={{ flex: 1 }}
+              />
+              <Ionicons
+                name="checkbox-outline"
+                size={25}
+                color={COLORS.white}
+              />
+            </View>
+            <View
+              style={{
+                flexDirection: 'row',
+                alignItems: 'center',
+                marginTop: 10,
+                gap: 10,
+                justifyContent: 'space-between',
+              }}
+            >
+              <Label
+                labelContent={'Platinum Feed'}
+                color={'#EF8E0F'}
+                size={16}
+                family={FONTS.PoppinsBold}
+                textStyle={{ flex: 1 }}
+              />
+              <Ionicons
+                name="checkbox-outline"
+                size={25}
+                color={COLORS.white}
+              />
+            </View>
+          </View>
+          <CustomButton
+            title="Post "
+            textSize={16}
+            textColor={COLORS.white}
+            containerStyle={styles.button}
           />
         </View>
       </View>
@@ -67,13 +145,13 @@ const styles = StyleSheet.create({
   },
   container: {
     width: 300,
-    backgroundColor: '#fff',
+    backgroundColor: '#424F54',
     borderRadius: 12,
-    paddingVertical: 24,
-    alignItems: 'center',
+    paddingVertical: 10,
     elevation: 5,
     gap: 10,
     paddingHorizontal: 10,
+    paddingBottom: 20,
   },
   title: {
     fontSize: 20,
@@ -88,10 +166,21 @@ const styles = StyleSheet.create({
     color: '#333',
   },
   button: {
-    backgroundColor: '#2e7d32',
-    paddingVertical: 10,
-    paddingHorizontal: 32,
-    borderRadius: 8,
+    backgroundColor: '#EF8E0F',
+    alignItems: 'center',
+    paddingHorizontal: 25,
+    borderRadius: 12,
+    borderWidth: 1,
+    borderColor: '#EF8E0F',
+    width: '60%',
+    alignSelf: 'center',
+    height: 45,
+    justifyContent: 'center',
+    elevation: 3,
+    shadowColor: '#000',
+    shadowOffset: { width: 1, height: 1 },
+    shadowOpacity: 2.5,
+    shadowRadius: 3,
   },
   buttonText: {
     color: '#fff',

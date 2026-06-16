@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
   drop: {
     borderRadius: 15,
     minHeight: 50,
-    backgroundColor: COLORS.primary2,
+    backgroundColor: '#F5F5F5',
   },
   placeholderStyle: {
     fontSize: 14,

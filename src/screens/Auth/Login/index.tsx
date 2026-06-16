@@ -1,5 +1,13 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet,
+  Alert,
+  ScrollView,
+} from 'react-native';
 import Label from '../../../component/Label';
 import { COLORS, FONTS } from '../../../constant';
 import UseInput from '../../../component/Hook/UseInput';
@@ -8,6 +16,11 @@ import { Ionicons } from '@react-native-vector-icons/ionicons';
 import AppButton from '../../../component/AppButton';
 import RowLabel from '../../../component/Label/RowLabel';
 import CustomButton from '../../../component/AppButton/GradientButton';
+import { appDispatch } from '../../../component/Redux/App/Store';
+import {
+  navigationStateType,
+  setNavigationState,
+} from '../../../component/Redux/Feature/Authentication';
 const LoginScreen: React.FC = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -26,7 +39,7 @@ const LoginScreen: React.FC = props => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Label
         labelContent={'Recipe'}
         color={COLORS.white}
@@ -90,6 +103,9 @@ const LoginScreen: React.FC = props => {
           textSize={16}
           textColor={COLORS.white}
           containerStyle={styles.button}
+          onPress={() =>
+            appDispatch(setNavigationState(navigationStateType.HOME))
+          }
         />
         <RowLabel
           firstLabel={'Login using social media or '}
@@ -124,16 +140,17 @@ const LoginScreen: React.FC = props => {
           />
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexGrow: 1,
     // justifyContent: 'center',
     backgroundColor: '#6CC14E',
-    paddingTop: 30,
+    paddingTop: 15,
+    paddingBottom: 20,
   },
   card: {
     backgroundColor: COLORS.white,

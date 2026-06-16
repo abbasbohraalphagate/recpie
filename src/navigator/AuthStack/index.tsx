@@ -13,7 +13,10 @@ export type AuthStackParamList = {
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 const AuthStack = () => (
-  <Stack.Navigator initialRouteName="Login">
+  <Stack.Navigator
+    initialRouteName="Login"
+    screenOptions={{ statusBarStyle: 'dark' }}
+  >
     <Stack.Screen
       name="Login"
       component={LoginScreen}

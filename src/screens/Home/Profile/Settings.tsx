@@ -11,19 +11,19 @@ import { COLORS, FONTS } from '../../../constant';
 import Ionicons from '@react-native-vector-icons/ionicons';
 import { Switch } from '@rneui/base';
 
-const Settings: React.FC = () => {
+const Settings: React.FC = props => {
   const options = [
-    { title: 'Messages', navigation: '' },
-    { title: 'Manage Premium Content', navigation: '' },
-    { title: 'Follow And Invite Friends.', navigation: '' },
-    { title: 'Analytics', navigation: '' },
-    { title: 'Notification', navigation: '' },
-    { title: 'Privacy', navigation: '' },
-    { title: 'Security', navigation: '' },
-    { title: 'Payment', navigation: '' },
-    { title: 'Account', navigation: '' },
-    { title: 'Help', navigation: '' },
-    { title: 'About', navigation: '' },
+    { title: 'Messages', navigation: 'MessageNotifications' },
+    { title: 'Manage Premium Content', navigation: 'PremiumContent' },
+    { title: 'Follow And Invite Friends.', navigation: 'InviteUser' },
+    { title: 'Analytics', navigation: 'Analytics' },
+    { title: 'Notification', navigation: 'Like' },
+    { title: 'Privacy', navigation: 'Privacy' },
+    { title: 'Security', navigation: 'Security' },
+    { title: 'Payment', navigation: 'Payment' },
+    { title: 'Account', navigation: 'Account' },
+    { title: 'Help', navigation: 'Help' },
+    { title: 'About', navigation: 'About' },
   ];
 
   return (
@@ -34,7 +34,10 @@ const Settings: React.FC = () => {
       </TouchableOpacity>
       {options?.map((item, index) => {
         return (
-          <TouchableOpacity style={styles.option}>
+          <TouchableOpacity
+            style={styles.option}
+            onPress={() => props?.navigation?.navigate(item?.navigation)}
+          >
             <Label
               labelContent={item?.title}
               size={15}
